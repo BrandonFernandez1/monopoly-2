@@ -1,0 +1,23 @@
+.initializer {
+    display: flex;
+    place-items: center;
+    flex-direction: column;
+}
+
+#name-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#name-inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+#debugging-corner {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}

@@ -6,23 +6,30 @@ import NameForm from './components/NameForm'
 import './App.css'
 
 const App = () => {
-  const [selectedButton, setSelectedButton] = useState(null)
+  const [playerCount, setPlayerCount] = useState(null)
   const [playerNames, setPlayerNames] = useState([])
 
-  if (!selectedButton) {
-    return (
-      <div>
-        <ChoosePlayers setActiveButton={setSelectedButton} setPlayerNames={setPlayerNames} />
-        <button onClick={() => console.log(selectedButton)}>Number</button>
-      </div>
-    )
+  let content;
+
+  if (!playerCount) {
+    content = <ChoosePlayers setActiveButton={setPlayerCount} setPlayerNames={setPlayerNames} />
   } else {
-    return (
-      <div>
-        <NameForm playerCount={selectedButton} playerNames={playerNames} setPlayerNames={setPlayerNames} />
-      </div>
-    )
+    content = <NameForm playerNames={playerNames} setPlayerNames={setPlayerNames} />
   }
+
+  return (
+    <div>
+      <div id="debugging-corner">
+        <h3>Debugging corner</h3>
+        <button onClick={() => console.log(playerCount)}>Player count</button>
+        <button onClick={() => console.log(playerNames)}>Player names</button>
+      </div>
+      
+      <div className="initializer">
+        {content}
+      </div>
+    </div>
+  )
 }
 
 export default App

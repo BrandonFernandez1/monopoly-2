@@ -1,12 +1,14 @@
-const ChoosePlayers = ({ setActiveButton }) => {
+const ChoosePlayers = ({ setActiveButton, setPlayerNames }) => {
   const buttons = [1, 2, 3, 4]
 
   const handleClick = (event) => {
-    setActiveButton(event.target.value)
+    const playerCount = Number(event.target.textContent)
+    setActiveButton(event.target.textContent)
+    setPlayerNames(Array(playerCount).fill(""))
   }
   
   return (
-    <div>
+    <>
       <h2>Choose number of players</h2>
       <div>
         {buttons.map((id) => (
@@ -18,7 +20,7 @@ const ChoosePlayers = ({ setActiveButton }) => {
           </button>
         ))}
       </div>
-    </div>
+    </>
   )
 }
 
