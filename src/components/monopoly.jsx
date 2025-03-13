@@ -1,13 +1,24 @@
-const Monopoly = ({ playerCount }) => {
+const Monopoly = ({ players }) => {
   return (
-    <div>
-      {playerCount.map(player => (
-        <PlayerCard />
+    <div className='player-cards'>
+      {players.map((player, index) => (
+        <PlayerCard key={index} name={player} />
       ))}
     </div>
   )
 }
 
-const PlayerCard = () => {
-
+const PlayerCard = ({ name }) => {
+  return (
+    <>
+      <div className='player-name'>
+        {name}
+      </div>
+      <div className='player-balance'>
+        $1000
+      </div>
+    </>
+  )
 }
+
+export default Monopoly
