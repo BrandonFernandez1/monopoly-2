@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import ChoosePlayers from './components/ChoosePlayers'
 import NameForm from './components/NameForm'
 import Monopoly from './components/Monopoly'
@@ -17,7 +15,8 @@ const App = () => {
     content = 
       <div className='initializer'>
         <ChoosePlayers 
-          setActiveButton={setPlayerCount} 
+          setActiveButton={setPlayerCount}
+          players={players} 
           setPlayers={setPlayers} 
           setGameState={setGameState} 
         />
@@ -31,11 +30,10 @@ const App = () => {
           setGameState={setGameState}
         />
       </div>
-  } 
-  else if (gameState == 'monopoly') {
+  } else if (gameState == 'monopoly') {
     content = 
       <div className='tracker'>
-        <Monopoly players={players} />
+        <Monopoly players={players} setPlayers={setPlayers} />
       </div>
   }
 

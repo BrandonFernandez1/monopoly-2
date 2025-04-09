@@ -1,10 +1,11 @@
-const ChoosePlayers = ({ setActiveButton, setPlayers, setGameState }) => {
+const ChoosePlayers = ({ setActiveButton, players, setPlayers, setGameState }) => {
   const buttons = [1, 2, 3, 4]
 
   const handleClick = (event) => {
     const playerCount = Number(event.target.textContent)
     setActiveButton(event.target.textContent)
-    setPlayers(Array(playerCount).fill().map(() => ({
+    setPlayers(Array.from({ length: playerCount }, (_, index) => ({
+      id: index,
       name: '',
       balance: 1000,
       bankrupt: false,

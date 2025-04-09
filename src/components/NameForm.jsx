@@ -1,39 +1,50 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const NameForm = ({ players, setPlayers, setGameState }) => {
-  const [names, setNames] = useState([])
+  const [inputs, setInputs] = useState(Array.from({ length: players.length }, () => ""))
 
-  const handleSubmit = (event, index, value) => {
+  const handleSubmit = (event) => {
     event.preventDefault()
-    setPlayers((prevPlayers) => 
-      prevPlayers.map((player, index) => ({
-        ...player,
-        name: names[index]
-      })))
+    
+    const updatedPlayers = players.map((player, index) => ({
+      ...player,
+      name: inputs[index]
+    }))
+
+    const freeParking = {
+      id: players.length,
+      name: 'Free Parking',
+      balance: 0,
+      bankrupt: false
+    }
+
+    setPlayers([...updatedPlayers, freeParking]) //Add names + free parking to player state
     setGameState('monopoly')
   }
 
-  const handleChange = (index, value) => {
-    setNames((prevNames) => prevNames.map((item, i) => (i === index ? value : item)))
+  const handleChange = (event, index) => {
+    const newInputs = [...inputs]
+    newInputs[index] = event.target.value
+    setInputs(newInputs)
   }
 
   return (
     <div>
       <form id='name-form' onSubmit={handleSubmit}>
         <div id='name-inputs'>
-          {names.map((item, index) => (
+          {inputs.map((input, index) => (
             <input 
               key={index}
-              value={item.name || ''}
-              onChange={(e) => handleChange(index, e.target.value)}
+              value={inputs[index]}
               placeholder={`Player ${index + 1}`}
-              className='name-input' 
+              onChange={(e) => handleChange(e, index)}
             />
           ))}
         </div>
         <button type='submit'>Submit</button>
       </form>
-      <button onClick={() => console.log(names)}>names</button>
+      <button onClick={() => console.log(players)}>players</button>
+      <button onClick={() => console.log(inputs)}>inputs</button>
     </div>
   )
 }

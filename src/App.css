@@ -21,3 +21,39 @@
     bottom: 0;
     left: 0;
 }
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.player-card {
+    text-align: center;
+    border: solid yellow 1px;
+    border-radius: 5px;
+}
+
+.free-parking {
+    border: solid fuchsia 1px;
+}
+
+.player-card button {
+    font-weight: 400;
+}
+
+.payment-module {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.payment-module .player {
+    text-align: center;
+}
+
+.payment-module .controls {
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+}
